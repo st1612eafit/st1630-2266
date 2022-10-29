@@ -9,19 +9,28 @@
 1. crear un servicio kinesis firehose por la consola web:
 
         Create: Delivery streaming data with Kinesis Firehose
-        Name: purchaseLogs
-        Source: Direct PUT or other sources
-        Use: Kinesis Agent
-        Destination:
-        Amazon S3 – select or create a bucket (st1612orderlogs)
-        S3 buffer conditions: 
-        Buffer interval: 60 segs
-        IAM role:
-        Create new: ‘firehose_delivery_role’ with defaults
+        
+        Source: Direct PUT
+        Destination: Amazon S3
 
+        Delivery stream name: purchaseLogs
+
+        Destination settings/S3 bucket: st1630orderlogs
+        
+        Buffer hints, compression and encryption:
+        Buffer interval: 60 segs
+
+        Advanced settings:
+        PermissionsInfo:
+        (o) Choose existing IAM role: LabRole
+
+        Click on: Create delivery stream
+        
 2. crear una instancia EC2 AMI2 linux
 
-Crear el IAM Role = 'MyEC2Kinesis' y Adicionarlo a esta instancia EC2 con los permisos: AmazonKinesisFullAccess y AmazonKinesisFirehoseFullAccess
+Actualizar el IAM Role = 'EMR_EC2_DefaultRole' y adicionar los permisos: AmazonKinesisFullAccess y AmazonKinesisFirehoseFullAccess.
+
+Este Role asociarlo a la instancia EC2 donde instalará el agent de kinesis.
 
 3. instalar el agente kinesis
 
@@ -30,6 +39,8 @@ Crear el IAM Role = 'MyEC2Kinesis' y Adicionarlo a esta instancia EC2 con los pe
 4. descargar los logs (OnlineRetail.csv) ejemplo y LogsGenerator.py (ya estan en el github)
 
 ## Nota: antes de Generar Logs, descomprima el archivo: OnlineRetail.csv.gz
+
+        $ cd kinesis/OrderHistory
         $ gunzip OnlineRetail.csv.gz
 
 5. cambiar permisos, crear directorios, etc:
@@ -38,6 +49,7 @@ Crear el IAM Role = 'MyEC2Kinesis' y Adicionarlo a esta instancia EC2 con los pe
         $ sudo mkdir /var/log/acmeco
 
 ### copie el archivo del repo github: agent.json-with-firehose hacia /etc/aws-kinesis/agent.json
+
         $ sudo vim /etc/aws-kinesis/agent.json
 
 6. iniciar el agente:
@@ -46,11 +58,13 @@ Crear el IAM Role = 'MyEC2Kinesis' y Adicionarlo a esta instancia EC2 con los pe
 
 7. ejecutar un envio de logs:
 
+        $ cd kinesis/OrderHistory
+
         $ sudo ./LogGenerator.py 1000
 
-8. chequee en unos minutos el 'bucket' st1612orderlogs
+8. chequee en unos minutos el 'bucket' st1630orderlogs
 
-9. ejecute aws glue y consulte con aws athena los datos de S3 st1612orderlogs
+9. ejecute aws glue y consulte con aws athena los datos de S3 st1630orderlogs
 
 # LAB 5 - Logs Agent -> Kinesis Data Streams -> Lambda -> DynamoDB:
 
@@ -122,12 +136,12 @@ Nota: tenga en cuenta que esta versión es python2, hay que adaptarlo a versión
 
 8. Crear una funcion aws lambda para consumir de kinesis data streams e insertar en una tabla DynamoDB:
 
-        Crear un IAM Role Lambda llamado 'acmecoOrders' con los permisos: 'AmazonKinesisReadOnlyAccess' y 'AmazonDynamoDBFullAccess'
+        Actualizar el IAM Role = 'LabRole' y adicionar los permisos: AmazonKinesisReadOnlyAccess y AmazonDynamoDBFullAccess
 
         Crear la function lambda 'Author from scratch':
         Function name: ProcessOrders
         Runtime: python 3.9
-        Use an existing role: acmecoOrders
+        Use an existing role: LabRole
         crearla.
 
         +Add Trigger: Kinesis Data Stream
