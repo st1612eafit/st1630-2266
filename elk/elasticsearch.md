@@ -5,6 +5,9 @@
 
 https://www.elastic.co/es/webinars/getting-started-elasticsearch
 
+datos para el ejercicio en Kibana/Dev Tools:
+    https://assets.contentstack.io/v3/assets/bltefdd0b53724fa2ce/blt56ad3f4e2c755f29/5d37c1602a506857d64eff48/es_commands.txt
+    
 # instalar:
 
     AWS EC2: t2.large / 20 GB DD (si va a usar API REST remoto, recuerde abrir el puerto 9200 y verificar que esta 'oyendo' o listing por 0.0.0.0)
