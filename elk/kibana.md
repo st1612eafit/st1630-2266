@@ -86,5 +86,30 @@ Salida asi:
 
     la nueva clave sera: Tdk4e_wB0=UCzID+i0Cr
 
+## en el browser de Kibana, cargue los datos ejemplo que trae Kibana:
+
+    Menu: [D] Default -> "Manage spaces" -> Kibana/Data Views -> Add sample data:
+
+    puede trabajar con: "start exploring" (va a la nube al sitio de elastic.co)
+
+    o
+
+    > Other sample data sets  (Alli hay 3 conjuntos de datos para explorar)  (usa los propios datos de este servidor, opción recomendada) 
+
+        Sample eCommerce orders -> Add data
+        Sample flight data -> Add data
+        Sample web logs -> Add data
+
+UNA VEZ CARGUE LOS DATOS EJEMPLO, PUEDE:
+
+    Discover
+    Dashboards
+    Canvas
+    Map
+
+    Discover: permite ejecutar queries, filtrar campos, visualizar, etc. es una muy buena opción para aprender.
+
+    Dashboards: permite crear tableros de visualización con base en los datos cargados.
+
 
 
