@@ -33,33 +33,33 @@ https://www.elastic.co/es/webinars/getting-started-kibana
 
     http://<ip-aws>:5601
 
-    Le pedirá el "Enrollment token", el cual puede observar en el link "Where do I find this":
+Le pedirá el "Enrollment token", el cual puede observar en el link "Where do I find this":
 
-    EN EL DIRECTORIO DE ELASTICSEARCH, ejecutar:
+EN EL DIRECTORIO DE ELASTICSEARCH, ejecutar:
 
     cd elasticsearch-8.5.0/
     bin/elasticsearch-create-enrollment-token --scope kibana
 
-    genera una salida asi:
+genera una salida asi:
 
         [ec2-user@ip-172-31-26-49 elasticsearch-8.5.0]$ bin/elasticsearch-create-enrollment-token --scope kibana
         eyJ2ZXIiOiI4LjUuMCIsImFkciI6WyIxNzIuMzEuMjYuNDk6OTIwMCJdLCJmZ3IiOiJhYWE4MGVkOTU3N2MzN2E4MmNmMGMwYTM0MWZlNjU0ODExNmQyZGNmYmViYTEzMjE4ZTQzNDM5ZWYzMjNhZThhIiwia2V5IjoiRHhMM1FvUUJuam5NOEZyYndveEM6VUhNWVdZVHBTZ21vQ1JzUUYyUkwtZyJ9
         [ec2-user@ip-172-31-26-49 elasticsearch-8.5.0]$
 
-    copie esa clave, le da 'paste' en kibana:
+copie esa clave, le da 'paste' en kibana:
 
-    LUEGO SOLICITA UN CÓDIGO DE VERIFICACIÓN DE 6 DÍGITOS, QUE SE OBTIENE ASI:
+LUEGO SOLICITA UN CÓDIGO DE VERIFICACIÓN DE 6 DÍGITOS, QUE SE OBTIENE ASI:
 
     cd kibana-8.5.0
     bin/kibana-verification-code
 
-    GENERA UNA SALIDA ASI:
+GENERA UNA SALIDA ASI:
 
         [ec2-user@ip-172-31-26-49 kibana-8.5.0]$ bin/kibana-verification-code
         Your verification code is:  527 244 
         [ec2-user@ip-172-31-26-49 kibana-8.5.0]$ 
 
-    Digite esos 6 digitos en el browser de Kibana:
+Digite esos 6 digitos en el browser de Kibana:
 
     527 244 
 
