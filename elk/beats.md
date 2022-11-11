@@ -13,7 +13,9 @@ Filebeat: https://www.elastic.co/es/downloads/beats/filebeat (envio de logs de u
     cd filebeat-8.5.0
 
 Edit the filebeat.yml configuration file
-Start the daemon by running sudo ./filebeat -e -c filebeat.yml
+Start the daemon by running:
+
+    sudo ./filebeat -e -c filebeat.yml
 
 Metricbeat: https://www.elastic.co/es/downloads/beats/metricbeat (envio de info del sistema - cpu, mem, disco, etc a ElasticSearch)
 
@@ -23,5 +25,6 @@ Metricbeat: https://www.elastic.co/es/downloads/beats/metricbeat (envio de info 
     
     cd metricbeat-8.5.0-linux-x86_64
 
-Edit the metricbeat.yml configuration file
-sudo ./metricbeat -e -c metricbeat.yml
+Edit the metricbeat.yml configuration file:
+
+    sudo ./metricbeat -e -c metricbeat.yml
